@@ -1,6 +1,11 @@
-import falcon
-import json
-import random
+import falcon, json, random
+from falcon_cors import CORS
+
+cors = CORS(
+  allow_all_origins=True,
+  allow_all_headers=True,
+  allow_methods_list=['GET']
+)
 
 class WtfResource:
   def on_get(self, req, resp):
@@ -8,5 +13,5 @@ class WtfResource:
       data = json.load(content)
       resp.media = random.choice(data)
 
-api = falcon.API()
+api = falcon.API(middleware=[cors.middleware])
 api.add_route('/', WtfResource())
