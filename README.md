@@ -40,7 +40,7 @@ gunicorn bolyaiwtf:api
 Run - on Windows
 
 ```sh
-waitress bolyaiwtf:api
+waitress-serve bolyaiwtf:api
 ```
 
 The app will listen at http://127.0.0.1:8080
