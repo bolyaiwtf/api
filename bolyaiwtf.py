@@ -11,7 +11,10 @@ class WtfResource:
   def on_get(self, req, resp):
     with open('content.json', encoding='utf8') as content:
       data = json.load(content)
-      resp.media = random.choice(data)
+      resp.media = {
+        'ok': True,
+        'wtf': random.choice(data)
+      }
 
 api = falcon.API(middleware=[cors.middleware])
 api.add_route('/', WtfResource())
