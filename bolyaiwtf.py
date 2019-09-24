@@ -7,14 +7,24 @@ cors = CORS(
   allow_methods_list=['GET']
 )
 
+def load_wtfs():
+  with open('content.json', encoding='utf8') as content:
+    return json.load(content)
+
 class WtfResource:
   def on_get(self, req, resp):
-    with open('content.json', encoding='utf8') as content:
-      data = json.load(content)
-      resp.media = {
-        'ok': True,
-        'wtf': random.choice(data)
-      }
+    resp.media = {
+      'ok': True,
+      'wtf': random.choice(load_wtfs())
+    }
+
+class AllWtfsResource:
+  def on_get(self, req, resp):
+    resp.media = {
+      'ok': True,
+      'wtfs': load_wtfs()
+    }
 
 api = falcon.API(middleware=[cors.middleware])
 api.add_route('/', WtfResource())
+api.add_route('/all', AllWtfsResource())
