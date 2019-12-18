@@ -45,6 +45,23 @@ waitress-serve bolyaiwtf:api
 
 The app will listen at http://127.0.0.1:8080
 
+## Commands
+
+### New Entry
+```sh
+python3 manage.py new
+```
+
+### Edit Entry
+```sh
+python3 manage.py edit [id]
+```
+
+### Delete Entry
+```sh
+python3 manage.py delete [id]
+```
+
 ## What?
 
 bolyai.wtf is a JOKE PROJECT. It is a random message generator specifically tied to student life in the Bolyai Farkas High School from Marosvásárhely, Romania. bolyai.wtf is in no way affiliated with the high school.
